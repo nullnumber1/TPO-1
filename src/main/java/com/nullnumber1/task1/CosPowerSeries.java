@@ -2,6 +2,7 @@ package com.nullnumber1.task1;
 
 public class CosPowerSeries {
 
+    // cos(x) = 1 - x^2/2! + x^4/4! - x^6/6! + ... + (-1)^n * x^(2n) / (2n)!
     public static double calculate(double x, int n) {
         double result = 0;
         for (int i = 0; i <= n; i++) {
