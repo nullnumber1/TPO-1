@@ -20,19 +20,25 @@ public class CosPowerSeriesTest {
 
     public static Collection<Object[]> testCases() {
         return Arrays.asList(new Object[][]{
-                {0, 0, Math.cos(0)},
-                {Math.PI / 2, 0, 1},
-                {Math.PI / 2, 2, Math.cos(Math.PI / 2)},
-                {Math.PI / 2, 3, Math.cos(Math.PI / 2)},
-                {Math.PI / 2, 4, Math.cos(Math.PI / 2)},
-                {Math.PI, 0, Math.cos(Math.PI)},
-                {Math.PI, 2, Math.cos(Math.PI)},
-                {Math.PI, 3, Math.cos(Math.PI)},
-                {Math.PI, 4, Math.cos(Math.PI)},
-                {-Math.PI / 2, 0, Math.cos(-Math.PI / 2)},
-                {-Math.PI / 2, 2, Math.cos(-Math.PI / 2)},
-                {-Math.PI / 2, 3, Math.cos(-Math.PI / 2)},
-                {-Math.PI / 2, 4, Math.cos(-Math.PI / 2)},
+                { 0, 0, 1 },
+                { Math.PI / 2, 0, 1 },
+                { Math.PI / 2, 1, 0 },
+                { Math.PI / 2, 2, -0.5 },
+                { Math.PI / 2, 3, 0 },
+                { Math.PI / 2, 4, 0.0417 },
+                { Math.PI, 0, -1 },
+                { Math.PI, 1, 0 },
+                { Math.PI, 2, 1 },
+                { Math.PI, 3, 0 },
+                { Math.PI, 4, -0.0417 },
+                { -Math.PI / 2, 0, 1 },
+                { -Math.PI / 2, 1, 0 },
+                { -Math.PI / 2, 2, -0.5 },
+                { -Math.PI / 2, 3, 0 },
+                { -Math.PI / 2, 4, 0.0417 },
+                { Double.NaN, 0, Double.NaN },
+                { Double.POSITIVE_INFINITY, 0, Double.NaN },
+                { Double.NEGATIVE_INFINITY, 0, Double.NaN },
         });
     }
 }
