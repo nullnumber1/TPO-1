@@ -20,10 +20,11 @@ public class HeapSortTest {
         assertEquals(expected, result);
     }
 
+    // TODO: group values
     public static Collection<Object[]> testCases() {
         return Arrays.asList(new Object[][] {
                 { Arrays.asList(), Arrays.asList() },
-                { Arrays.asList(1), Arrays.asList(1) },
+                { Arrays.asList(0, 0), Arrays.asList(0, 0) },
                 { Arrays.asList(2, 1), Arrays.asList(1, 2) },
                 { Arrays.asList(3, 2, 1), Arrays.asList(1, 2, 3) },
                 { Arrays.asList(5, 6, 1, 3, 2, 4), Arrays.asList(1, 2, 3, 4, 5, 6) },

@@ -1,30 +1,36 @@
 package com.nullnumber1.task1;
 
 public class CosPowerSeries {
-
-    // cos(x) = 1 - x^2/2! + x^4/4! - x^6/6! + ... + (-1)^n * x^(2n) / (2n)!
     public static double calculate(double x, int n) {
-        if (Double.isNaN(x)) {
-            return Double.NaN;
-        } else if (Double.isInfinite(x)) {
-            return Double.NaN;
+        double PI2 = Math.PI * 2;
+
+        if (x >= 0) {
+            while (x > PI2) {
+                x -= PI2;
+            }
+        } else if (x < 0) {
+            while (x < PI2) {
+                x += PI2;
+            }
         }
 
-        double result = 0;
-        for (int i = 0; i <= n; i++) {
-            int sign = (i % 2 == 0) ? 1 : -1;
-            double numerator = Math.pow(x, 2 * i);
-            double denominator = factorial(2 * i);
-            result += sign * (numerator / denominator);
-        }
-        return result;
-    }
-
-    private static double factorial(int n) {
         double result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
+
+        double xx = x * x;
+        double pow = xx;
+        double fact = 1;
+
+        int sign = -1;
+
+        for (int i = 2; i < n; i += 2) {
+            fact /= i;
+            result += sign * pow * fact;    // (-1)^(n-1) * x^(2n-2) / (2n-2)!
+            sign = -sign;
+            fact /= (i + 1);
+            pow *= xx;
         }
+
         return result;
+
     }
 }

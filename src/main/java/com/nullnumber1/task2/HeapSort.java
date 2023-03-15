@@ -3,7 +3,7 @@ package com.nullnumber1.task2;
 import java.util.List;
 
 public class HeapSort {
-
+    // TODO: fix corner cases
     public static List<Integer> sort(List<Integer> list) {
         int n = list.size();
 
