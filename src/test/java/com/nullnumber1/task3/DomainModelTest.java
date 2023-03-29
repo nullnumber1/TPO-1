@@ -11,9 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Entity tests")
 public class DomainModelTest {
@@ -34,20 +32,12 @@ public class DomainModelTest {
         assertDoesNotThrow(entity::performAction);
     }
 
-    @DisplayName("Test slip()")
-    @ParameterizedTest(name = "{index} => entity={0}, fromWhere={1}")
-    @MethodSource("provideSlipArguments")
-    void testSlip(Entity entity, String fromWhere) {
-        assertDoesNotThrow(() -> ((Neznayka) entity).slip(fromWhere));
-    }
-
-    private static Stream<Object[]> provideSlipArguments() {
-        return Stream.of(
-                new Object[]{new Neznayka(), "fence"},
-                new Object[]{new Neznayka(), "wall"},
-                new Object[]{new Neznayka(), "tree"},
-                new Object[]{new Neznayka(), "roof"}
-        );
+    @DisplayName("Test Neznayka's slip()")
+    @Test
+    void testSlip() {
+        Neznayka neznayka = new Neznayka();
+        neznayka.slip("fence");
+        assertTrue(neznayka.isHasSlipped());
     }
 
     @DisplayName("Test loading wool from Gnome to Truck and warning Gnomes by Neznayka")
@@ -57,16 +47,19 @@ public class DomainModelTest {
             "400, ''"
     })
     void testLoadWool(int woolAmount, String exceptionType) {
-        Entity gnome = new Gnome();
+        Gnome gnome = new Gnome();
         Truck truck = new Truck(500);
-        Entity neznayka = new Neznayka();
+        Neznayka neznayka = new Neznayka();
 
         if (exceptionType.equals("OutOfCapacityException")) {
             assertThrows(OutOfCapacityException.class, () -> truck.load("wool", woolAmount));
         } else {
             assertDoesNotThrow(() -> truck.load("wool", woolAmount));
+            assertEquals(woolAmount, truck.getAmountLoaded());
             gnome.performAction();
+            assertTrue(gnome.isRunning());
             neznayka.performAction();
+            assertTrue(neznayka.isHasShouted());
         }
     }
 }

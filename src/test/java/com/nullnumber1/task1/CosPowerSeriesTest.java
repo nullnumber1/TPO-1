@@ -2,16 +2,13 @@ package com.nullnumber1.task1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CosPowerSeriesTest {
+    // minimum, maximum, and zero crossing points of the cosine function
     @ParameterizedTest(name = "cos({0})")
     @DisplayName("Check PI dots")
     @ValueSource(doubles = {-2 * Math.PI, -1.5 * Math.PI, -Math.PI, -0.5 * Math.PI, 0, 0.5 * Math.PI, Math.PI, 1.5 * Math.PI, 2 * Math.PI})
@@ -21,6 +18,7 @@ class CosPowerSeriesTest {
         );
     }
 
+    // angles slightly away from the multiples of pi/2
     @ParameterizedTest(name = "cos({0})")
     @DisplayName("Check Border dots")
     @ValueSource(doubles = {-2.1 * Math.PI, -1.9 * Math.PI, -1.6 * Math.PI,

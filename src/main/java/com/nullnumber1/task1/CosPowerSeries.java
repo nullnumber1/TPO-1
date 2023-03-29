@@ -6,11 +6,11 @@ public class CosPowerSeries {
 
         if (x >= 0) {
             while (x > PI2) {
-                x -= PI2;
+                x -= PI2; // To normalize the input angle
             }
         } else if (x < 0) {
             while (x < PI2) {
-                x += PI2;
+                x += PI2; // To normalize the input angle
             }
         }
 

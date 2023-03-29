@@ -1,6 +1,6 @@
 package com.nullnumber1.task3;
 
-import com.nullnumber1.task3.model.*;
+import com.nullnumber1.task3.model.Entity;
 import com.nullnumber1.task3.model.entities.*;
 
 public class Application {
